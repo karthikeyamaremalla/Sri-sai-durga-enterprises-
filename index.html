@@ -6,83 +6,94 @@
     <title>Pillows & Mattresses</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        $primary-color: #4CAF50;
-$text-color: white;
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-header {
-    background-color: $primary-color;
-    color: $text-color;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.logo-left {
-    width: 60px;
-    height: 60px;
-    margin-left: 10px;
-}
-
-nav {
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        gap: 20px;
-
-        li {
-            display: inline;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo-left{
+            width: 60px;
+            height: 60px;
+            margin-left: 10px;
             
-            a {
-                text-decoration: none;
-                color: $text-color;
-                padding: 10px;
-                &:hover {
-                    background-color: darken($primary-color, 10%);
-                    border-radius: 5px;
-                }
+
+        }
+        #searchBar {
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            margin-top: 10px;
+            
+        }
+        #products {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+        }
+        .product select,.product input{
+            margin-top: 10px;
+            padding: 5px;
+            width: 100%;
+        
+
+        }
+        .quantity {
+            margin-top: 10px;}
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #order, #contact {
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+        }
+        form input, form textarea {
+            display: block;
+            width: 80%;
+            max-width: 300px;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        @media (max-width: 768px) {
+            #products {
+                flex-direction: column;
+                align-items: center;
+            }
+            .logo-left {
+                width: 40px;
+            }
+            #searchBar {
+                width: 90%;
             }
         }
-    }
-}
-
-#searchBar {
-    padding: 10px;
-    width: 80%;
-    max-width: 300px;
-    margin-top: 10px;
-}
-
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-    }
-    
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .logo-left {
-        width: 40px;
-    }
-    
-    #searchBar {
-        width: 90%;
-    }
-}
-
     </style>
 </head>
 <body>
@@ -195,10 +206,10 @@ nav {
         
         // Order functionality
         function placeOrder(productName) {
-            const quantity = document.getElementById(`quantity-${productName.replace(' ', '-').toLowerCase()}`).value;
+            const quantity = document.getElementById(quantity-${productName.replace(' ', '-').toLowerCase()}).value;
             const orderId = Math.floor(Math.random() * 1000000); // Generate a random Order ID
 
-            alert(`Order placed for ${productName}, Quantity: ${quantity}, Order ID: ${orderId}`);
+            alert(Order placed for ${productName}, Quantity: ${quantity}, Order ID: ${orderId});
 
             // Store order details and send to backend for processing
             localStorage.setItem('orderDetails', JSON.stringify({
@@ -237,7 +248,7 @@ nav {
 
         function trackOrder() {
             const orderId = document.getElementById('orderId').value;
-            document.getElementById('orderStatus').innerText = `Tracking order with ID: ${orderId}`;
+            document.getElementById('orderStatus').innerText = Tracking order with ID: ${orderId};
         }
     </script>
         
