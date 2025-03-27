@@ -1,258 +1,259 @@
 <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Pillows & Mattresses</title>
-     <link rel="stylesheet" href="styles.css">
-     <style>
-         body {
-             font-family: Arial, sans-serif;
-             margin: 0;
-             padding: 0;
-             text-align: center;
-         }
-         header {
-             background-color: #4CAF50;
-             color: white;
-             padding: 15px;
-             display: flex;
-             justify-content: space-between;
-             align-items: center;
-             flex-wrap: wrap;
-         }
-         .logo-left{
-             width: 60px;
-             height: 60px;
-             margin-left: 10px;
- 
- 
-         }
-         #searchBar {
-             padding: 10px;
-             width: 80%;
-             max-width: 300px;
-             margin-top: 10px;
- 
-         }
-         #products {
-             display: flex;
-             justify-content: center;
-             gap: 20px;
-             flex-wrap: wrap;
-             padding: 20px;
-         }
-         .product {
-             border: 1px solid #ddd;
-             padding: 15px;
-             width: 200px;
-             text-align: center;
-         }
-         .product select,.product input{
-             margin-top: 10px;
-             padding: 5px;
-             width: 100%;
- 
- 
-         }
-         .quantity {
-             margin-top: 10px;}
- 
-         button {
-             background-color: #4CAF50;
-             color: white;
-             border: none;
-             padding: 10px;
-             cursor: pointer;
-             margin-top: 10px;
-         }
-         button:hover {
-             background-color: #45a049;
-         }
-         #order, #contact {
-             margin-top: 30px;
-             padding: 20px;
-             border-top: 1px solid #ddd;
-         }
-         form input, form textarea {
-             display: block;
-             width: 80%;
-             max-width: 300px;
-             margin: 10px auto;
-             padding: 10px;
-             border: 1px solid #ddd;
-         }
-         @media (max-width: 768px) {
-             #products {
-                 flex-direction: column;
-                 align-items: center;
-             }
-             .logo-left {
-                 width: 40px;
-             }
-             #searchBar {
-                 width: 90%;
-             }
-         }
-     </style>
- </head>
- <body>
-     <header>
- 
-         <img id="logo-left" src="baba logo.png" alt="Company Logo logo-left">
-         <h1>Sri Sai Durga Decors Enterprises</h1>
-         <h1>Sri Sai Durga Enterprises</h1>
-         <input type="text" id="searchBar" placeholder="Search products...">
- 
-     </header>
- 
-     <section id="products">
-         <div class="product" data-name="sweet dreams">
-             <h2>Sweet Dreams</h2>
-             <p>comfortable</p>
-             <p>Available In Black and White Fibers</p>
-             <div class="quantity">
-                 <label for="quantity-sweet-dreams">Quantity:</label>
-                 <input type="number" id="quantity-sweet-dreams" value="1" min="1">
-             </div>
-             <button onclick="placeOrder('sweet dreams')">Order Now</button>
-         </div>
-         <div class="product" data-name="Sleep line">
-             <h2>Sleep line</h2>
-             <p>Extra soft and fluffy</p>
-             <div class="quantity">
-                 <label for="quantity-sleep-line">Quantity:</label>
-                 <input type="number" id="quantity-sleep-line" value="1" min="1">
-             </div>
-             <button onclick="placeOrder('Sleep line')">Order Now</button>
-         </div>
-         <div class="product" data-name="Soft Dreams">
-             <h2>Soft Dreams</h2>
-             <p>Memory foam Pillow</p>
-             <P>Extra soft and Extra Comfort</P>
-             <div class="quantity">
-                 <label for="quantity-soft-dreams">Quantity:</label>
-                 <input type="number" id="quantity-soft-dreams" value="1" min="1">
-             </div>
-             <button onclick="placeOrder('Soft Dreams')">Order Now</button>
-         </div>
-         <div class="product" data-name="comfort line">
-             <h2>comfort line</h2>
-             <p>Soft and comfortabale</p>
-             <div class="quantity">
-                 <label for="quantity-comfort-line">Quantity:</label>
-                 <input type="number" id="quantity-comfort-line" value="1" min="1">
-             </div>
-             <button onclick="placeOrder('comfort line')">Order Now</button>
-         </div>
-         <div class="product" data-name="Mattress">
-             <h2>Mattress</h2>
-             <p>soft and comfortabale</p>
-             <label for="size">Choose Size:</label>
-             <select id="size">
-                 <option value="2*6">2*6</option>
-                 <option value="3*6">3*6</option>
-                 <option value="4*6">5*6</option>
-                 <option value="5*6">4*6</option>
-                 <option value="6*6">6*6</option>
-             </select>
-             <label for="fiber">Choose Fiber:</label>
-             <select id="fiber">
-                 <option value="Black Fiber">Black Fiber</option>
-                 <option value="White Fiber">White Fiber</option>
-                 <option value="Recron Fiber">Recron Fiber</option>
-             </select>
-             <div class="quantity">
-                 <label for="quantity-mattress">Quantity:</label>
-                 <input type="number" id="quantity-mattress" value="1" min="1">
-             </div>
-             <button onclick="placeOrder(' Mattress')">Order Now</button>
-         </div>
-     </section>
- 
-     <section id="order">
-         <h2>Track Your Order</h2>
-         <input type="text" id="orderId" placeholder="Enter Order ID">
-         <button onclick="trackOrder()">Track</button>
-         <p id="orderStatus"></p>
-     </section>
- 
-     <section id="contact">
-         <h2>Contact Us</h2>
-         <form>
-             <input type="text" placeholder="Your Name" required>
-             <input type="email" placeholder="Your Email" required>
-             <textarea placeholder="Your Message" required></textarea>
-             <button type="submit">Send</button>
-         </form>
-     </section>
- 
-     <script>
-     const searchBar = document.getElementById('searchBar');
-         const products = document.querySelectorAll('.product');
- 
-         // Search functionality
-         searchBar.addEventListener('input', function() {
-             const searchTerm = searchBar.value.toLowerCase();
- 
-             products.forEach(product => {
-                 const productName = product.getAttribute('data-name').toLowerCase();
-                 if (productName.includes(searchTerm)) {
-                     product.style.display = '';
-                 } else {
-                     product.style.display = 'none';
-                 }
-             });
-         });
- 
-         // Order functionality
-         function placeOrder(productName) {
-             const quantity = document.getElementById(`quantity-${productName.replace(' ', '-').toLowerCase()}`).value;
-             const orderId = Math.floor(Math.random() * 1000000); // Generate a random Order ID
- 
-             alert(`Order placed for ${productName}, Quantity: ${quantity}, Order ID: ${orderId}`);
- 
-             // Store order details and send to backend for processing
-             localStorage.setItem('orderDetails', JSON.stringify({
-                 orderId,
-                 productName,
-                 quantity,
-                 customerName: document.getElementById('customerName').value,
-                 customerEmail: document.getElementById('customerEmail').value
-             }));
-         }
- 
-         // Simulate Order Submission to the Backend
-         function submitOrder(event) {
-             event.preventDefault();  // Prevent page refresh
- 
-             const customerName = document.getElementById('customerName').value;
-             const customerEmail = document.getElementById('customerEmail').value;
-             const customerMessage = document.getElementById('customerMessage').value;
- 
-             // Get order details from localStorage (simulating a backend submission)
-             const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
- 
-             if (orderDetails) {
-                 const orderData = {
-                     ...orderDetails,
-                     customerName,
-                     customerEmail,
-                     customerMessage,
-                 };
- 
-                 // Mock sending order details to a backend
-                 console.log('Order details sent to radhakrishnamaremalla123@gmail.com:', orderData);
-                 alert('Your order has been received and will be processed soon!');
-             }
-         }
- 
-         function trackOrder() {
-             const orderId = document.getElementById('orderId').value;
-             document.getElementById('orderStatus').innerText = `Tracking order with ID: ${orderId}`;
-         }
-     </script>
- 
- 
- </body>
- </html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pillows & Mattresses</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo-left{
+            width: 60px;
+            height: 60px;
+            margin-left: 10px;
+            
+
+        }
+        #searchBar {
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            margin-top: 10px;
+            
+        }
+        #products {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            width: 200px;
+            text-align: center;
+        }
+        .product select,.product input{
+            margin-top: 10px;
+            padding: 5px;
+            width: 100%;
+        
+
+        }
+        .quantity {
+            margin-top: 10px;}
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #order, #contact {
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+        }
+        form input, form textarea {
+            display: block;
+            width: 80%;
+            max-width: 300px;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        @media (max-width: 768px) {
+            #products {
+                flex-direction: column;
+                align-items: center;
+            }
+            .logo-left {
+                width: 40px;
+            }
+            #searchBar {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+        <img id="logo-left" src="baba logo.png" alt="Company Logo logo-left">
+        <h1>Sri Sai Durga Decors Enterprises</h1>
+        <input type="text" id="searchBar" placeholder="Search products...">
+
+    </header>
+    
+    <section id="products">
+        <div class="product" data-name="sweet dreams">
+            <h2>Sweet Dreams</h2>
+            <p>comfortable</p>
+            <p>Available In Black and White Fibers</p>
+            <div class="quantity">
+                <label for="quantity-sweet-dreams">Quantity:</label>
+                <input type="number" id="quantity-sweet-dreams" value="1" min="1">
+            </div>
+            <button onclick="placeOrder('sweet dreams')">Order Now</button>
+        </div>
+        <div class="product" data-name="Sleep line">
+            <h2>Sleep line</h2>
+            <p>Extra soft and fluffy</p>
+            <div class="quantity">
+                <label for="quantity-sleep-line">Quantity:</label>
+                <input type="number" id="quantity-sleep-line" value="1" min="1">
+            </div>
+            <button onclick="placeOrder('Sleep line')">Order Now</button>
+        </div>
+        <div class="product" data-name="Soft Dreams">
+            <h2>Soft Dreams</h2>
+            <p>Memory foam Pillow</p>
+            <P>Extra soft and Extra Comfort</P>
+            <div class="quantity">
+                <label for="quantity-soft-dreams">Quantity:</label>
+                <input type="number" id="quantity-soft-dreams" value="1" min="1">
+            </div>
+            <button onclick="placeOrder('Soft Dreams')">Order Now</button>
+        </div>
+        <div class="product" data-name="comfort line">
+            <h2>comfort line</h2>
+            <p>Soft and comfortabale</p>
+            <div class="quantity">
+                <label for="quantity-comfort-line">Quantity:</label>
+                <input type="number" id="quantity-comfort-line" value="1" min="1">
+            </div>
+            <button onclick="placeOrder('comfort line')">Order Now</button>
+        </div>
+        <div class="product" data-name="Mattress">
+            <h2>Mattress</h2>
+            <p>soft and comfortabale</p>
+            <label for="size">Choose Size:</label>
+            <select id="size">
+                <option value="2*6">2*6</option>
+                <option value="3*6">3*6</option>
+                <option value="4*6">5*6</option>
+                <option value="5*6">4*6</option>
+                <option value="6*6">6*6</option>
+            </select>
+            <label for="fiber">Choose Fiber:</label>
+            <select id="fiber">
+                <option value="Black Fiber">Black Fiber</option>
+                <option value="White Fiber">White Fiber</option>
+                <option value="Recron Fiber">Recron Fiber</option>
+            </select>
+            <div class="quantity">
+                <label for="quantity-mattress">Quantity:</label>
+                <input type="number" id="quantity-mattress" value="1" min="1">
+            </div>
+            <button onclick="placeOrder(' Mattress')">Order Now</button>
+        </div>
+    </section>
+    
+    <section id="order">
+        <h2>Track Your Order</h2>
+        <input type="text" id="orderId" placeholder="Enter Order ID">
+        <button onclick="trackOrder()">Track</button>
+        <p id="orderStatus"></p>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    
+    <script>
+    const searchBar = document.getElementById('searchBar');
+        const products = document.querySelectorAll('.product');
+        
+        // Search functionality
+        searchBar.addEventListener('input', function() {
+            const searchTerm = searchBar.value.toLowerCase();
+            
+            products.forEach(product => {
+                const productName = product.getAttribute('data-name').toLowerCase();
+                if (productName.includes(searchTerm)) {
+                    product.style.display = '';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
+        
+        // Order functionality
+        function placeOrder(productName) {
+            const quantity = document.getElementById(`quantity-${productName.replace(' ', '-').toLowerCase()}`).value;
+            const orderId = Math.floor(Math.random() * 1000000); // Generate a random Order ID
+
+            alert(`Order placed for ${productName}, Quantity: ${quantity}, Order ID: ${orderId}`);
+
+            // Store order details and send to backend for processing
+            localStorage.setItem('orderDetails', JSON.stringify({
+                orderId,
+                productName,
+                quantity,
+                customerName: document.getElementById('customerName').value,
+                customerEmail: document.getElementById('customerEmail').value
+            }));
+        }
+
+        // Simulate Order Submission to the Backend
+        function submitOrder(event) {
+            event.preventDefault();  // Prevent page refresh
+
+            const customerName = document.getElementById('customerName').value;
+            const customerEmail = document.getElementById('customerEmail').value;
+            const customerMessage = document.getElementById('customerMessage').value;
+
+            // Get order details from localStorage (simulating a backend submission)
+            const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+
+            if (orderDetails) {
+                const orderData = {
+                    ...orderDetails,
+                    customerName,
+                    customerEmail,
+                    customerMessage,
+                };
+
+                // Mock sending order details to a backend
+                console.log('Order details sent to radhakrishnamaremalla123@gmail.com:', orderData);
+                alert('Your order has been received and will be processed soon!');
+            }
+        }
+
+        function trackOrder() {
+            const orderId = document.getElementById('orderId').value;
+            document.getElementById('orderStatus').innerText = `Tracking order with ID: ${orderId}`;
+        }
+    </script>
+        
+
+</body>
+</html>
+
+
